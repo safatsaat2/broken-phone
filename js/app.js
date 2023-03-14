@@ -63,10 +63,8 @@ document.getElementById('btn-search').addEventListener('click', function(){
 
 // search input field enter key handler
 document.getElementById('search-field').addEventListener('keypress', function (e) {
-    if (e.key === 'enter') {
+    if (e.key === 'Enter') {
         processSearch(10);
-    }{
-        
     }
 });
 
