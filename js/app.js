@@ -53,7 +53,17 @@ const processSearch = (dataLimit) =>{
     toggleSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    loadPhones(searchText, dataLimit);
+    if(searchText){
+        localStorage.setItem('value', searchText)
+        const gettingValue = localStorage.getItem('value')
+        loadPhones(gettingValue, dataLimit);
+        searchField.value = '';
+    }
+    {
+        const gettingValue = localStorage.getItem('value')
+    loadPhones(gettingValue, dataLimit);
+    }
+
 }
 
 // handle search button click
@@ -93,11 +103,11 @@ const loadPhoneDetails = async id =>{
 }
 
 const displayPhoneDetails = phone =>{
-    console.log(phone.mainFeatures.storage);
+    // console.log(phone.mainFeatures.storage);
     let modalTitle = document.getElementById('phoneDetailModalLabel');
     modalTitle.innerText = phone.name;
     const phoneDetails = document.getElementById('phone-details');
-    console.log(phone.mainFeatures.sensors[0]);
+    // console.log(phone.mainFeatures.sensors[0]);
     phoneDetails.innerHTML = `
         <p>Release Date: ${phone.releaseDate}</p>
         <p>Storage: ${phone.mainFeatures.storage}</p>
